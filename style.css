@@ -1,0 +1,3238 @@
+:root{
+  --bg:#070707;
+  --panel:#111111;
+  --panel-2:#171717;
+  --text:#f5f5f2;
+  --muted:#9d9d98;
+  --line:#292929;
+  --red:#ff2038;
+  --lime:#d9ff43;
+  --white:#fff;
+  --radius:24px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Inter",Arial,sans-serif;
+  overflow-x:hidden;
+}
+body::selection{background:var(--red);color:white}
+a{color:inherit;text-decoration:none}
+.noise{
+  position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+.header{
+  height:84px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(22px,4vw,72px);position:absolute;top:0;left:0;right:0;z-index:10;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.13em}
+.logo-mark{
+  display:grid;place-items:center;width:47px;height:29px;background:var(--red);
+  transform:skew(-13deg);font-family:"Oswald";font-size:20px;letter-spacing:-.05em;
+}
+.nav{display:flex;gap:30px;font-size:13px;font-weight:600;color:#c3c3c0}
+.nav a:hover{color:white}
+.header-button{
+  padding:12px 17px;border:1px solid rgba(255,255,255,.25);border-radius:99px;
+  font-size:12px;font-weight:700;
+}
+.hero{
+  min-height:100vh;position:relative;display:flex;align-items:center;
+  padding:140px clamp(22px,6vw,100px) 120px;overflow:hidden;
+  background:
+   radial-gradient(circle at 70% 28%,rgba(255,32,56,.22),transparent 28%),
+   linear-gradient(135deg,#080808 42%,#111 42% 60%,#080808 60%);
+}
+.hero-lines{position:absolute;inset:0;opacity:.28;background:repeating-linear-gradient(115deg,transparent 0 94px,rgba(255,255,255,.055) 95px 96px)}
+.hero-content{position:relative;z-index:2;width:50%;max-width:760px}
+.eyebrow,.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.23em;font-weight:800}
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:23px;color:#d6d6d1}
+.eyebrow span{width:35px;height:3px;background:var(--red)}
+h1,h2,h3,p{margin-top:0}
+h1{
+  margin-bottom:27px;font-family:"Oswald",sans-serif;font-size:clamp(72px,10vw,155px);
+  line-height:.78;letter-spacing:-.06em;font-style:italic;
+}
+h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--text)}
+.hero-text{max-width:620px;color:#bbb;font-size:17px;line-height:1.75}
+.hero-actions{display:flex;gap:12px;margin-top:34px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  min-height:52px;padding:0 22px;border-radius:4px;font-weight:800;font-size:13px;
+  text-transform:uppercase;letter-spacing:.06em;
+}
+.btn-primary{background:var(--red);color:white;box-shadow:0 12px 35px rgba(255,32,56,.22)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{border:1px solid #3b3b3b;background:rgba(255,255,255,.03)}
+.hero-visual{position:absolute;right:0;top:100px;width:53%;height:70%;z-index:1}
+.car{position:absolute;width:86%;height:300px;right:-4%;top:31%;transform:rotate(-6deg)}
+.car-shadow{position:absolute;width:83%;height:70px;left:7%;bottom:3%;background:#000;filter:blur(22px);border-radius:50%}
+.body{position:absolute;background:linear-gradient(180deg,#fc2f43,#9e0014);box-shadow:inset 0 -13px 17px rgba(0,0,0,.45)}
+.body-back{width:44%;height:72px;left:17%;top:93px;border-radius:70% 15% 12% 20%;transform:skewX(-10deg)}
+.body-front{width:53%;height:52px;left:43%;top:109px;border-radius:10% 85% 20% 13%;transform:skewX(-14deg)}
+.cockpit{position:absolute;width:25%;height:65px;left:38%;top:47px;background:#171717;border-radius:50% 65% 0 0;transform:skewX(-9deg)}
+.halo{position:absolute;left:46%;top:50px;width:5px;height:63px;background:#e7e7e7;z-index:3;transform:rotate(-15deg);box-shadow:-30px -9px 0 -1px #e7e7e7}
+.rear-wing{position:absolute;left:7%;top:44px;width:16%;height:18px;background:#d6d6d6;transform:rotate(3deg);box-shadow:0 15px 0 -5px #a7a7a7}
+.front-wing{position:absolute;right:-2%;top:135px;width:21%;height:12px;background:#ddd;transform:rotate(-1deg);box-shadow:7px 12px 0 -4px #888}
+.wheel{position:absolute;width:70px;height:93px;background:#080808;border:7px solid #242424;border-radius:20px;z-index:4;box-shadow:inset 0 0 0 4px #070707,0 5px 8px #000}
+.wheel::after{content:"";position:absolute;inset:23px 14px;background:#555;border-radius:50%}
+.wheel-l1{left:13%;top:75px}.wheel-r1{left:13%;top:126px}.wheel-l2{right:13%;top:100px}.wheel-r2{right:13%;top:150px}
+.number{position:absolute;left:48%;top:92px;font:800 29px "Oswald";z-index:5}
+.track{position:absolute;left:9%;right:-10%;height:13px;top:64%;background:#d4ff3e;transform:rotate(-7deg);box-shadow:0 42px 0 -5px rgba(217,255,67,.28)}
+.speed-label{position:absolute;right:12%;top:9%;font:800 clamp(70px,8vw,128px) "Oswald";color:rgba(255,255,255,.12);line-height:.8}
+.speed-label small{display:block;font-size:15px;text-align:right;letter-spacing:.16em}
+.hero-stats{
+  position:absolute;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(4,1fr);
+  margin:0 clamp(22px,6vw,100px);border-top:1px solid rgba(255,255,255,.15);
+}
+.hero-stats div{padding:25px 26px;border-right:1px solid rgba(255,255,255,.12);display:flex;align-items:baseline;gap:12px}
+.hero-stats strong{font:700 32px "Oswald"}.hero-stats span{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#aaa}
+
+.section{padding:110px clamp(22px,6vw,100px)}
+.section-heading{display:flex;align-items:flex-start;gap:25px;margin-bottom:50px}
+.section-heading.compact{margin-bottom:35px}
+.section-number{font:700 13px "Oswald";color:var(--red);border:1px solid #3b3b3b;padding:7px 9px;border-radius:50%}
+.kicker{color:var(--red);margin-bottom:11px}
+h2{font:700 clamp(42px,5.8vw,82px)/.97 "Oswald";letter-spacing:-.035em;text-transform:uppercase}
+h3{font-size:20px}
+.intro{background:#efefe9;color:#0b0b0b}
+.intro-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:15px}
+.feature-card,.mini-card{border:1px solid #cecec8;border-radius:var(--radius);padding:30px;background:#f8f8f4}
+.feature-main{grid-row:span 2;padding:43px;min-height:480px;background:#111;color:white;position:relative;overflow:hidden}
+.feature-main::after{content:"";position:absolute;width:280px;height:280px;border:50px solid var(--red);border-radius:50%;right:-130px;bottom:-145px}
+.card-tag{font-size:10px;font-weight:800;letter-spacing:.17em;color:var(--red)}
+.feature-main h3{font:700 clamp(36px,4vw,58px)/1.05 "Oswald";margin-top:30px}
+.feature-main p{max-width:560px;line-height:1.7;color:#c5c5c0}
+.feature-line{width:100px;height:5px;background:var(--red);margin:35px 0}
+.feature-main .muted{color:#8b8b87}
+.mini-card{min-height:230px;display:flex;flex-direction:column}
+.mini-card p{color:#60605c;line-height:1.6;margin-bottom:0}
+.mini-icon{font:700 12px "Oswald";color:#888;margin-bottom:auto}
+.accent-card{background:var(--red);color:white;border-color:var(--red)}
+.accent-card p,.accent-card .mini-icon{color:#fff}
+
+.weekend{background:#0a0a0a}
+.weekend-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.day-card{background:var(--panel);border:1px solid var(--line);padding:32px;border-radius:var(--radius);min-height:410px}
+.day-card.active{background:#f1f1eb;color:#090909;transform:translateY(-13px)}
+.day-card.race-day{border-color:rgba(255,32,56,.55)}
+.day-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:56px}
+.day-top span{font:700 13px "Oswald";color:var(--red);letter-spacing:.2em}
+.day-top strong{font-size:12px;color:#888}
+.day-card h3{font:700 31px "Oswald";text-transform:uppercase}
+.day-card p,.day-card li{font-size:14px;line-height:1.7;color:#989894}
+.day-card.active p{color:#555}
+.day-card ul{padding-left:19px}
+.qualifying{display:grid;gap:8px;margin-top:25px}
+.qualifying span{display:flex;justify-content:space-between;background:#d9d9d2;padding:11px 13px;border-radius:5px;font-size:12px}
+.qualifying b{color:var(--red)}
+.lights{display:flex;gap:8px;margin-top:42px;padding:13px;background:#040404;border-radius:10px;width:max-content}
+.lights i{display:block;width:20px;height:20px;background:var(--red);border-radius:50%;box-shadow:0 0 16px rgba(255,32,56,.8)}
+.sprint-banner{margin-top:24px;border-radius:var(--radius);padding:34px 38px;background:linear-gradient(95deg,#201400,#0d0d0d 52%);border:1px solid #3c2c08;display:grid;grid-template-columns:.8fr 1.5fr;gap:30px;align-items:center}
+.sprint-banner h3{font:700 29px "Oswald";margin:8px 0 0;text-transform:uppercase}
+.sprint-banner p{margin:0;color:#aaa;line-height:1.7}
+
+.points{background:var(--red)}
+.points .kicker,.points .section-number{color:white}
+.points .section-number{border-color:rgba(255,255,255,.5)}
+.points-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:25px}
+.podium{min-height:390px;display:flex;align-items:flex-end;justify-content:center;gap:10px;padding:45px;background:#0b0b0b;border-radius:var(--radius)}
+.podium-place{width:29%;background:#242424;text-align:center;padding:20px 10px;display:flex;flex-direction:column;justify-content:flex-start}
+.podium-place span{font:700 14px "Oswald";color:#999}
+.podium-place b{font:700 61px "Oswald";margin-top:18px}
+.podium-place small{text-transform:uppercase;letter-spacing:.15em;color:#888}
+.podium-place.first{height:285px;background:white;color:#111}.podium-place.second{height:220px}.podium-place.third{height:180px}
+.points-table{background:#fff;color:#111;border-radius:var(--radius);padding:25px}
+.points-table div{display:flex;justify-content:space-between;border-bottom:1px solid #ddd;padding:12px 6px}
+.points-table div:last-child{border:0}.points-table span{font-size:13px}.points-table b{font:700 22px "Oswald"}
+.note{font-size:12px;margin:20px 0 0;color:#ffe0e4}
+
+.rules{background:#e9e9e3;color:#101010}
+.regulation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.reg-card{position:relative;background:#f8f8f4;border:1px solid #d2d2cb;border-radius:var(--radius);padding:31px;min-height:330px;overflow:hidden}
+.reg-card h3{font:700 28px/1.05 "Oswald";text-transform:uppercase;margin-top:45px}
+.reg-card p{font-size:14px;line-height:1.7;color:#5e5e59}
+.reg-highlight{background:#101010;color:white;border-color:#101010;grid-column:span 2}
+.reg-highlight p{color:#aaa;max-width:70%}
+.reg-index{position:absolute;top:28px;right:29px;font:700 12px "Oswald";color:var(--red)}
+.wing-graphic{position:absolute;right:35px;bottom:28px;width:180px;height:90px}
+.wing-graphic i{position:absolute;right:0;width:150px;height:11px;background:var(--red);transform:skewX(-20deg)}
+.wing-graphic i:nth-child(2){top:27px;width:120px}.wing-graphic i:nth-child(3){top:54px;width:90px}
+.power-bar{height:8px;background:#ddd;margin:30px 0 8px}.power-bar span{display:block;width:73%;height:100%;background:var(--red)}
+.reg-card small{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#777}
+.fuel-icon{font-size:90px;color:var(--red);line-height:.8;position:absolute;right:30px;bottom:18px}
+.dimension{position:absolute;bottom:30px;font:700 13px "Oswald";color:var(--red);letter-spacing:.14em}
+.qual-mini{display:flex;gap:10px;align-items:center;margin-top:25px}.qual-mini b{font:700 28px "Oswald"}.qual-mini span{color:var(--red)}
+
+.tyres{background:#090909}
+.tyres-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.tyre-card{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:var(--panel)}
+.tyre{width:92px;height:92px;border:11px solid #333;border-radius:50%;display:grid;place-items:center;margin-bottom:24px;box-shadow:inset 0 0 0 8px #080808}
+.tyre span{font:700 28px "Oswald"}
+.tyre-card h3{font:700 24px "Oswald";text-transform:uppercase;margin-bottom:8px}
+.tyre-card p{font-size:12px;color:#888;line-height:1.55}
+.soft .tyre{border-color:#f34343}.medium .tyre{border-color:#ffd840}.hard .tyre{border-color:#eaeaea}.intermediate .tyre{border-color:#46d75b}.wet .tyre{border-color:#2f6cff}
+.strategy-box{margin-top:25px;padding:38px;border-radius:var(--radius);background:#171717;display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:center}
+.pit-clock{width:160px;height:160px;border:8px solid var(--red);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.pit-clock strong{font:700 48px "Oswald"}.pit-clock span{font-size:11px;text-transform:uppercase;letter-spacing:.2em}
+.strategy-box h3{font:700 31px "Oswald";text-transform:uppercase;margin:11px 0}.strategy-box p{color:#999;line-height:1.7}
+
+.flags{background:#151515}
+.flags-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.flags-grid article{border:1px solid #2e2e2e;border-radius:18px;padding:24px;display:grid;grid-template-columns:58px 1fr;column-gap:17px;align-items:center}
+.flags-grid h3{margin:0;font:700 22px "Oswald";text-transform:uppercase}.flags-grid p{grid-column:2;font-size:12px;color:#888;line-height:1.5;margin:4px 0 0}
+.flag{display:block;width:58px;height:42px;clip-path:polygon(0 0,100% 10%,92% 100%,0 85%)}
+.yellow{background:#ffd630}.red{background:#ef2035}.blue{background:#2e66e8}.green{background:#44d66b}
+.chequered{background:conic-gradient(#fff 25%,#111 0 50%,#fff 0 75%,#111 0);background-size:16px 16px}
+.blackwhite{background:linear-gradient(135deg,#111 50%,#fff 50%)}
+
+.teams{background:#eeeee8;color:#0b0b0b}
+.teams-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.team-card{position:relative;background:white;border:1px solid #d4d4ce;border-radius:19px;padding:26px;min-height:195px;overflow:hidden;transition:.25s}
+.team-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:var(--team,#888)}
+.team-card:hover{transform:translateY(-5px);box-shadow:0 17px 45px rgba(0,0,0,.12)}
+.team-code{font:700 11px "Oswald";color:var(--team,#888);letter-spacing:.16em}
+.team-card h3{font:700 27px "Oswald";text-transform:uppercase;margin:28px 0 10px}
+.team-card p{font-size:13px;line-height:1.7;color:#666;margin:0}
+.mercedes{--team:#00a19c}.ferrari{--team:#e80020}.mclaren{--team:#ff8000}.redbull{--team:#3154c7}.racingbulls{--team:#5779d8}.alpine{--team:#ef83c7}.haas{--team:#b6b6b6}.audi{--team:#ed1b24}.williams{--team:#1594f6}.aston{--team:#087a63}.cadillac{--team:#111}
+.new-team{position:absolute;right:16px;top:16px;background:var(--lime);padding:7px 9px;font:800 9px "Inter";letter-spacing:.12em}
+
+.glossary{background:#0a0a0a}
+.glossary-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.glossary dl{margin:0;border-top:1px solid #333}
+.glossary dl div{display:grid;grid-template-columns:170px 1fr;gap:20px;border-bottom:1px solid #282828;padding:22px 0}
+.glossary dt{font:700 18px "Oswald";text-transform:uppercase}.glossary dd{margin:0;font-size:24px;color:#8d8d89;line-height:1.6}
+
+.watch-guide{padding-top:35px;display:grid;grid-template-columns:1.25fr .75fr;gap:15px;background:#0a0a0a}
+.watch-content,.watch-graphic{border-radius:var(--radius);padding:45px}
+.watch-content{background:var(--red)}
+.watch-content .card-tag{color:white}.watch-content h2{font-size:clamp(42px,5vw,68px);margin:20px 0 32px}
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:33px}
+.steps div{display:flex;gap:14px;background:rgba(0,0,0,.12);padding:16px;border-radius:12px}
+.steps span{display:grid;place-items:center;min-width:28px;height:28px;background:#0b0b0b;border-radius:50%;font:700 12px "Oswald"}
+.steps p{font-size:22px;line-height:1.5;margin:0}.watch-content .btn{background:#0b0b0b}
+.watch-graphic{background:#d9ff43;color:#101010;display:flex;flex-direction:column;justify-content:space-between}
+.lap-counter small{display:block;font:700 12px "Oswald";letter-spacing:.2em}.lap-counter b{font:700 120px/.9 "Oswald";display:inline-block}.lap-counter span{font:700 20px "Oswald"}
+.telemetry{border-top:2px solid #111;padding-top:20px;display:grid;gap:14px}
+.telemetry span{display:flex;justify-content:space-between;font:700 11px "Oswald";letter-spacing:.13em}.telemetry b{font-size:22px}
+
+.footer{padding:45px clamp(22px,6vw,100px);border-top:1px solid #262626;display:grid;grid-template-columns:.7fr 1.6fr 1fr;gap:30px;align-items:center}
+.footer p{font-size:20px;color:#777;line-height:1.6;margin:0}.sources{display:flex;justify-content:flex-end;gap:17px;font-size:20px;color:#aaa}.sources a:hover{color:white}
+
+@media(max-width:1050px){
+  .nav{display:none}
+  .hero-content{width:65%}.hero-visual{opacity:.55;width:65%}
+  .intro-grid{grid-template-columns:1fr 1fr}.feature-main{grid-column:span 2}
+  .regulation-grid{grid-template-columns:1fr 1fr}
+  .tyres-grid{grid-template-columns:repeat(3,1fr)}
+  .teams-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+  .header{height:70px}.header-button{display:none}
+  .hero{min-height:900px;padding-top:115px;align-items:flex-start}
+  .hero-content{width:100%}.hero-visual{top:470px;width:100%;height:330px;opacity:.8}
+  .car{width:105%;right:-25%;top:20%;transform:scale(.76) rotate(-6deg)}
+  .speed-label{display:none}
+  .hero-stats{grid-template-columns:1fr 1fr;margin:0 22px}.hero-stats div{padding:15px}
+  .section{padding:78px 22px}.section-heading{gap:14px}
+  .intro-grid,.weekend-grid,.points-layout,.regulation-grid,.glossary-grid,.watch-guide{grid-template-columns:1fr}
+  .feature-main{grid-column:auto;grid-row:auto}.day-card.active{transform:none}
+  .sprint-banner{grid-template-columns:1fr}
+  .reg-highlight{grid-column:auto}.reg-highlight p{max-width:100%}.wing-graphic{opacity:.4}
+  .tyres-grid{grid-template-columns:1fr 1fr}.strategy-box{grid-template-columns:1fr}.pit-clock{width:120px;height:120px}
+  .flags-grid{grid-template-columns:1fr}.teams-grid{grid-template-columns:1fr}
+  .glossary dl div{grid-template-columns:120px 1fr}
+  .steps{grid-template-columns:1fr}.watch-graphic{min-height:390px}
+  .footer{grid-template-columns:1fr}.sources{justify-content:flex-start;flex-wrap:wrap}
+}
+@media(max-width:450px){
+  h1{font-size:70px}.hero-text{font-size:15px}.hero-actions{flex-direction:column;align-items:stretch}
+  .hero-stats span{font-size:9px}.tyres-grid{grid-template-columns:1fr}
+  .feature-main{padding:29px}.day-card,.reg-card{padding:25px}
+}
+
+/* Expanded 2026 guide */
+/* Карточки команд 2026 */
+
+.media-frame {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.025)
+  );
+}
+
+.media-frame img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media-frame::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  display: grid;
+  place-items: center;
+
+  padding: 12px;
+
+  color: #777;
+  font-family: "Oswald", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.media-frame.loaded::after {
+  display: none;
+}
+
+.teams-profiles-grid {
+  display: grid;
+
+  grid-template-columns: 1fr;
+
+  gap: 32px;
+}
+
+.team-profile {
+  --team: #777;
+
+  position: relative;
+  overflow: hidden;
+
+  padding: 26px;
+
+  background: #ffffff;
+  border: 1px solid #d3d3cd;
+  border-radius: 24px;
+}
+
+.team-profile::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  height: 6px;
+
+  background: var(--team);
+}
+
+.team-profile-head {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+}
+
+.logo-frame {
+  width: 84px;
+  height: 70px;
+
+  background: #ecece6;
+  border-radius: 15px;
+}
+
+.logo-frame img {
+  object-fit: contain;
+  padding: 10px;
+}
+
+.team-kicker {
+  color: var(--team);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.team-profile h3 {
+  margin: 5px 0;
+
+  font-family: "Oswald", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.team-profile-head p {
+  margin: 0;
+
+  color: #777;
+  font-size: 11px;
+}
+
+.team-description {
+  margin: 20px 0;
+  padding-top: 18px;
+
+  color: #555;
+  font-size: 13px;
+  line-height: 1.65;
+
+  border-top: 1px solid #e2e2dc;
+}
+
+.people-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.person-mini {
+  min-width: 0;
+}
+
+.portrait {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.person-mini span {
+  display: block;
+
+  color: var(--team);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.person-mini b {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+/* Цвета команд */
+
+.team-profile.mercedes {
+  --team: #00a19c;
+}
+
+.team-profile.ferrari {
+  --team: #e80020;
+}
+
+.team-profile.mclaren {
+  --team: #ff8000;
+}
+
+.team-profile.redbull {
+  --team: #3154c7;
+}
+
+.team-profile.racingbulls {
+  --team: #5779d8;
+}
+
+.team-profile.alpine {
+  --team: #ef83c7;
+}
+
+.team-profile.haas {
+  --team: #777777;
+}
+
+.team-profile.audi {
+  --team: #ed1b24;
+}
+
+.team-profile.williams {
+  --team: #1594f6;
+}
+
+.team-profile.aston {
+  --team: #087a63;
+}
+
+.team-profile.cadillac {
+  --team: #111111;
+}
+
+/* Адаптация карточек команд под планшеты */
+
+@media (max-width: 1050px) {
+  .teams-profiles-grid {
+      grid-template-columns: 1fr;
+  }
+}
+
+
+/* Адаптация под небольшие планшеты и телефоны */
+
+@media (max-width: 760px) {
+
+  .team-people {
+      grid-template-columns: 1fr;
+  }
+
+  .person-photo {
+      aspect-ratio: 4 / 5;
+  }
+
+  .team-card-header {
+      align-items: flex-start;
+  }
+
+  .team-logo {
+      width: 90px;
+      height: 60px;
+  }
+}
+
+
+/* Адаптация под маленькие телефоны */
+
+@media (max-width: 480px) {
+  .team-profile {
+      padding: 20px;
+  }
+
+  .team-profile-head {
+      grid-template-columns: 65px minmax(0, 1fr);
+      gap: 14px;
+  }
+
+  .logo-frame {
+      width: 65px;
+      height: 58px;
+  }
+
+  .team-profile h3 {
+      font-size: 24px;
+  }
+
+  .people-row {
+      grid-template-columns: 1fr;
+  }
+
+  .person-mini.principal {
+      grid-column: auto;
+  }
+
+  .portrait {
+      height: 250px;
+  }
+}
+.teams-profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.team-profile {
+    position: relative;
+    overflow: hidden;
+    padding: 26px;
+    background: #ffffff;
+    border: 1px solid #d3d3cd;
+    border-radius: 24px;
+}
+
+.people-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+}
+
+.portrait {
+    width: 100%;
+    height: 145px;
+    margin-bottom: 10px;
+    background: #e4e4de;
+    border-radius: 13px;
+    overflow: hidden;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.teams-profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.team-profile {
+  position: relative;
+  overflow: hidden;
+  padding: 26px;
+  background: #ffffff;
+  border: 1px solid #d3d3cd;
+  border-radius: 24px;
+}
+
+.people-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.portrait {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #e4e4de;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  transition: transform 0.4s ease;
+}
+
+/* ============================= */
+/* БОЛЬШАЯ КАРТОЧКА КОМАНДЫ      */
+/* ============================= */
+
+.team-card-large {
+  position: relative;
+
+  width: 100%;
+
+  padding: 34px;
+
+  background: #ffffff;
+
+  border: 2px solid #111111;
+  border-radius: 22px;
+
+  overflow: hidden;
+}
+
+
+/* цветная полоска сверху */
+
+.team-card-large::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 7px;
+
+  background: var(--team-color);
+}
+
+
+/* верх карточки */
+
+.team-card-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 30px;
+
+  margin-bottom: 20px;
+}
+
+
+.team-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+
+  color: var(--team-color);
+}
+
+
+.team-card-header h3 {
+  margin: 0;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 38px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+
+
+.team-card-header p {
+  margin-top: 8px;
+  margin-bottom: 0;
+
+  color: #777;
+}
+
+
+/* логотип */
+
+.team-logo {
+  width: 130px;
+  height: 80px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+
+.team-logo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+
+/* описание команды */
+
+.team-description {
+  max-width: 750px;
+
+  margin-bottom: 30px;
+
+  color: #555;
+
+  line-height: 1.7;
+}
+
+
+/* ============================= */
+/* 3 ЧЕЛОВЕКА                    */
+/* ============================= */
+
+.team-people {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.person-photo {
+  width: 100%;
+  height: 360px;
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  background: #eeeeea;
+}
+
+.person-photo img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: top center;
+}
+
+.team-person h4 {
+  margin: 6px 0 0;
+
+  font-family: "Oswald", sans-serif;
+  font-size: 22px;
+}
+
+.person-role {
+  display: block;
+
+  margin-top: 14px;
+
+  font-size: 20px;
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* контейнер изображения */
+
+.person-photo {
+  width: 100%;
+
+  aspect-ratio: 3 / 4;
+
+  overflow: hidden;
+
+  background: #eeeeea;
+
+  border: 2px solid #111111;
+  border-radius: 16px;
+}
+
+
+/* само фото */
+
+.person-photo img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  object-position: top center;
+
+  transition: transform 0.35s ease;
+}
+
+
+/* лёгкий эффект */
+
+.team-person:hover .person-photo img {
+  transform: scale(1.035);
+}
+
+
+/* подпись */
+
+
+
+
+.team-person h4 {
+  margin: 5px 0 0;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 22px;
+  font-weight: 700;
+}
+
+
+/* ============================= */
+/* ЦВЕТА КОМАНД                  */
+/* ============================= */
+
+.team-card-large.mercedes {
+  --team-color: #00a19c;
+}
+
+.team-card-large.ferrari {
+  --team-color: #e80020;
+}
+
+.team-card-large.mclaren {
+  --team-color: #ff8000;
+}
+
+.team-card-large.redbull {
+  --team-color: #3154c7;
+}
+
+.team-card-large.racingbulls {
+  --team-color: #5779d8;
+}
+
+.team-card-large.alpine {
+  --team-color: #ef83c7;
+}
+
+.team-card-large.haas {
+  --team-color: #777777;
+}
+
+.team-card-large.audi {
+  --team-color: #ed1b24;
+}
+
+.team-card-large.williams {
+  --team-color: #1594f6;
+}
+
+.team-card-large.aston {
+  --team-color: #087a63;
+}
+
+.team-card-large.cadillac {
+  --team-color: #111111;
+}
+
+
+/* ========================================= */
+/*             CIRCUITS 2026                 */
+/* ========================================= */
+
+.circuits-new {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+
+/* вступительный текст */
+
+.circuits-intro {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 50px;
+
+  max-width: 1000px;
+
+  margin-bottom: 60px;
+}
+
+
+.circuits-intro p {
+  margin: 0;
+
+  color: #949490;
+
+  font-size: 18px;
+
+  line-height: 1.8;
+}
+
+
+
+/* весь список */
+
+.circuits-list {
+  display: grid;
+
+  grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+
+/* одна трасса */
+
+.circuit {
+  overflow: hidden;
+
+  background: #141414;
+
+  border: 1px solid #2b2b2b;
+
+  border-radius: 24px;
+
+  transition:
+      transform 0.3s ease,
+      border-color 0.3s ease;
+}
+
+
+.circuit:hover {
+  transform: translateY(-5px);
+
+  border-color: #444444;
+}
+
+
+
+/* ========================= */
+/* схема                     */
+/* ========================= */
+
+.circuit-layout {
+  position: relative;
+
+  height: 330px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 55px;
+
+  background: #eeeeea;
+}
+
+
+.circuit-layout img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: contain;
+
+  
+
+  transition: transform 0.4s ease;
+}
+
+
+.circuit:hover .circuit-layout img {
+  transform: scale(1.04);
+}
+
+
+
+/* номер трассы */
+
+.circuit-number {
+  position: absolute;
+
+  top: 20px;
+  left: 22px;
+
+  color: #111111;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 20px;
+
+  font-weight: 700;
+}
+
+
+
+/* ========================= */
+/* текст                     */
+/* ========================= */
+
+.circuit-info {
+  padding: 50px;
+}
+
+
+.circuit-country {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #ff2038;
+
+  font-size: 20px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+}
+
+
+.circuit-info h3 {
+  margin: 0 0 25px;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 31px;
+
+  font-weight: 700;
+
+  line-height: 1.05;
+
+  text-transform: uppercase;
+}
+
+
+
+/* данные */
+
+.circuit-data {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 28px;
+
+  margin-bottom: 24px;
+}
+
+
+.circuit-data span {
+  padding: 13px;
+
+  background: #1e1e1e;
+
+  border: 1px solid #303030;
+
+  border-radius: 9px;
+
+  color: #777777;
+
+  font-size: 16px;
+
+  text-transform: uppercase;
+}
+
+
+.circuit-data b {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #ffffff;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 19px;
+}
+
+
+
+/* основное описание */
+
+.circuit-info > p {
+  color: #969691;
+
+  font-size: 20px;
+
+  line-height: 1.75;
+}
+
+
+
+/* специальный блок */
+
+.circuit-feature {
+  margin-top: 25px;
+
+  padding: 20px;
+
+  background: #0b0b0b;
+
+  border-left: 3px solid #ff2038;
+}
+
+
+.circuit-feature span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #ff2038;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+}
+
+
+.circuit-feature p {
+  margin: 0;
+
+  color: #a8a8a3;
+
+  font-size: 16px;
+
+  line-height: 1.65;
+}
+
+
+
+/* ========================================= */
+/* планшет                                   */
+/* ========================================= */
+
+@media (max-width: 900px) {
+
+  .circuits-list {
+      grid-template-columns: 1fr;
+  }
+
+}
+
+
+
+/* ========================================= */
+/* телефон                                   */
+/* ========================================= */
+
+@media (max-width: 600px) {
+
+  .circuits-intro {
+      grid-template-columns: 1fr;
+
+      gap: 15px;
+  }
+
+
+  .circuit-layout {
+      height: 250px;
+
+      padding: 35px;
+  }
+
+
+  .circuit-data {
+      grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ================================================= */
+/*            STRATEGY — F1 STYLE                     */
+/* ================================================= */
+
+.strategy-deep {
+    position: relative;
+    overflow: hidden;
+
+    padding-top: 120px;
+    padding-bottom: 120px;
+
+    background: #eeeeea;
+    color: #111111;
+}
+
+
+/* декоративный большой номер */
+
+.strategy-deep::before {
+    content: "09";
+
+    position: absolute;
+    right: 4%;
+    top: 40px;
+
+    font-family: "Oswald", sans-serif;
+    font-size: 240px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    color: rgba(0, 0, 0, 0.035);
+
+    pointer-events: none;
+}
+
+
+/* заголовок */
+
+.strategy-deep .section-heading {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ============================= */
+/* верхние 3 карточки            */
+/* ============================= */
+
+.strategy-intro {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 16px;
+
+    margin-bottom: 18px;
+}
+
+
+.strategy-intro article {
+    position: relative;
+
+    min-height: 290px;
+
+    padding: 30px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #d6d6d0;
+    border-radius: 24px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.strategy-intro article:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+
+/* огромный номер внутри карточки */
+
+.strategy-intro article > span {
+    display: block;
+
+    margin-bottom: 65px;
+
+    color: #ff2038;
+
+    font-family: "Oswald", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.strategy-intro article > span::after {
+    content: "";
+
+    display: block;
+
+    width: 45px;
+    height: 4px;
+
+    margin-top: 10px;
+
+    background: #ff2038;
+}
+
+
+.strategy-intro h3 {
+    margin: 0 0 13px;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 52px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+.strategy-intro p {
+    margin: 0;
+
+    color: #686863;
+
+    font-size: 24px;
+    line-height: 1.7;
+}
+
+
+
+/* ================================================= */
+/* Андеркат / оверкат / SC / Split                   */
+/* ================================================= */
+
+.strategy-cases {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 16px;
+
+    margin-top: 18px;
+}
+
+
+.strategy-cases article {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 170px 1fr;
+
+    align-items: center;
+
+    gap: 25px;
+
+    min-height: 220px;
+
+    padding: 25px;
+
+    overflow: hidden;
+
+    background: #101010;
+    color: #ffffff;
+
+    border-radius: 24px;
+
+    border: 1px solid #272727;
+}
+
+
+.strategy-cases article::after {
+    content: "";
+
+    position: absolute;
+
+    right: -50px;
+    bottom: -70px;
+
+    width: 160px;
+    height: 160px;
+
+    border: 28px solid rgba(255, 32, 56, 0.09);
+
+    border-radius: 50%;
+}
+
+
+.strategy-cases .card-tag {
+    color: #ff2038;
+
+    font-size: 24px;
+    letter-spacing: 0.17em;
+}
+
+
+.strategy-cases h3 {
+    margin: 7px 0 10px;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 28px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+.strategy-cases p {
+    margin: 0;
+
+    color: #969691;
+
+    font-size: 22px;
+    line-height: 1.7;
+}
+
+
+
+/* маленькая визуализация */
+
+.case-visual {
+    position: relative;
+
+    height: 125px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 49%,
+            rgba(255,255,255,.15) 50%,
+            transparent 51%
+        ),
+        #191919;
+
+    border-radius: 16px;
+}
+
+
+.case-visual::before {
+    content: "";
+
+    position: absolute;
+
+    left: 12px;
+    right: 12px;
+    top: 50%;
+
+    height: 2px;
+
+    background: #555555;
+}
+
+
+.case-visual i {
+    position: absolute;
+
+    width: 28px;
+    height: 10px;
+
+    top: 46%;
+
+    background: #ff2038;
+
+    border-radius: 3px;
+}
+
+
+.case-visual i:nth-child(1) {
+    left: 14%;
+}
+
+.case-visual i:nth-child(2) {
+    left: 45%;
+
+    background: #ffffff;
+}
+
+.case-visual i:nth-child(3) {
+    left: 72%;
+
+    background: #777777;
+}
+
+
+/* разные движения */
+
+.undercut i:nth-child(1) {
+    top: 68%;
+}
+
+.overcut i:nth-child(2) {
+    top: 25%;
+}
+
+.safety i:nth-child(3) {
+    width: 40px;
+
+    background: #d9ff43;
+}
+
+.split i:nth-child(1) {
+    top: 27%;
+}
+
+.split i:nth-child(2) {
+    top: 68%;
+}
+
+
+
+/* ================================================= */
+/* Что учитывает стратег                             */
+/* ================================================= */
+
+.strategy-factors {
+    margin-top: 18px;
+
+    padding: 40px;
+
+    background: #ff2038;
+    color: #ffffff;
+
+    border-radius: 26px;
+}
+
+
+.strategy-factors h3 {
+    margin-bottom: 28px;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 36px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+.strategy-factors > div {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+
+.strategy-factors span {
+    min-height: 145px;
+
+    padding: 18px;
+
+    background: rgba(0, 0, 0, 0.14);
+
+    border-radius: 14px;
+
+    font-size: 24px;
+    line-height: 1.6;
+}
+
+
+.strategy-factors b {
+    display: block;
+
+    margin-bottom: 9px;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 24px;
+
+    text-transform: uppercase;
+}
+
+
+
+/* ================================================= */
+/*                HOW THE RACE WORKS                 */
+/* ================================================= */
+
+.race-guide {
+    position: relative;
+
+    padding-top: 120px;
+    padding-bottom: 120px;
+
+    background: #090909;
+    color: #ffffff;
+
+    overflow: hidden;
+}
+
+
+.race-guide::before {
+    content: "10";
+
+    position: absolute;
+
+    right: 4%;
+    top: 30px;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 240px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    color: rgba(255, 255, 255, 0.025);
+
+    pointer-events: none;
+}
+
+
+
+/* ================================================= */
+/* 8 этапов гонки                                    */
+/* ================================================= */
+
+.race-timeline {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 14px;
+}
+
+
+.race-timeline article {
+    position: relative;
+
+    min-height: 290px;
+
+    padding: 28px;
+
+    overflow: hidden;
+
+    background: #141414;
+
+    border: 1px solid #2a2a2a;
+    border-radius: 22px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.race-timeline article:hover {
+    transform: translateY(-5px);
+
+    border-color: #ff2038;
+}
+
+
+/* красная линия сверху */
+
+.race-timeline article::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background: #ff2038;
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: transform 0.3s ease;
+}
+
+
+.race-timeline article:hover::before {
+    transform: scaleX(1);
+}
+
+
+.race-timeline article > span {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    margin-bottom: 55px;
+
+    border: 1px solid #3a3a3a;
+    border-radius: 50%;
+
+    color: #ff2038;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+
+.race-timeline h3 {
+    margin: 0 0 12px;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 29px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+.race-timeline p {
+    margin: 0;
+
+    color: #8f8f8b;
+
+    font-size: 26px;
+    line-height: 1.7;
+}
+
+
+
+/* ================================================= */
+/* обгон / защита / флаги / штрафы                   */
+/* ================================================= */
+
+.race-knowledge-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 14px;
+
+    margin-top: 18px;
+}
+
+
+.race-knowledge-grid article {
+    min-height: 210px;
+
+    padding: 27px;
+
+    background: #eeeeea;
+    color: #111111;
+
+    border-radius: 20px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.race-knowledge-grid article:hover {
+    transform: translateY(-4px);
+
+    background: #ffffff;
+}
+
+
+.race-knowledge-grid h3 {
+    margin-bottom: 14px;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 29px;
+
+    text-transform: uppercase;
+}
+
+
+.race-knowledge-grid h3::after {
+    content: "";
+
+    display: block;
+
+    width: 35px;
+    height: 4px;
+
+    margin-top: 10px;
+
+    background: #ff2038;
+}
+
+
+.race-knowledge-grid p {
+    margin: 0;
+
+    color: #62625e;
+
+    font-size: 26px;
+    line-height: 1.7;
+}
+
+
+
+/* ================================================= */
+/*                    ADAPTIVE                       */
+/* ================================================= */
+
+@media (max-width: 1100px) {
+
+    .strategy-intro {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .strategy-factors > div {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .race-timeline {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .race-knowledge-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 760px) {
+
+    .strategy-intro,
+    .strategy-cases,
+    .race-timeline,
+    .race-knowledge-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .strategy-cases article {
+        grid-template-columns: 1fr;
+    }
+
+
+    .case-visual {
+        height: 100px;
+    }
+
+
+    .strategy-factors > div {
+        grid-template-columns: 1fr;
+    }
+
+
+    .strategy-deep::before,
+    .race-guide::before {
+        font-size: 130px;
+    }
+
+}
+
+
+/* ================================================= */
+/*          САМЫЕ ИЗВЕСТНЫЕ ЛИЧНОСТИ F1             */
+/* ================================================= */
+
+.legends {
+  position: relative;
+
+  padding-top: 120px;
+  padding-bottom: 120px;
+
+  background: #eeeeea;
+  color: #111111;
+
+  overflow: hidden;
+}
+
+
+/* большой декоративный номер справа */
+
+.legends::before {
+  content: "11";
+
+  position: absolute;
+
+  top: 35px;
+  right: 4%;
+
+  font-family: "Oswald", sans-serif;
+  font-size: 240px;
+  font-weight: 700;
+  line-height: 1;
+
+  color: rgba(0, 0, 0, 0.035);
+
+  pointer-events: none;
+}
+
+
+/* заголовок поверх декоративного номера */
+
+.legends .section-heading {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* красная подпись */
+
+.legends .kicker {
+  color: #ff2038;
+}
+
+
+/* номер раздела */
+
+.legends .section-number {
+  color: #ff2038;
+
+  border-color: #bdbdb8;
+}
+
+
+/* ================================================= */
+/*                  СЕТКА КАРТОЧЕК                   */
+/* ================================================= */
+
+.legends-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 22px;
+
+  max-width: 1500px;
+
+  margin: 0 auto;
+}
+
+
+/* ================================================= */
+/*                    КАРТОЧКА                       */
+/* ================================================= */
+
+.legend-card {
+  position: relative;
+
+  min-width: 0;
+
+  padding: 18px;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #d3d3cd;
+  border-radius: 24px;
+
+  transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+}
+
+
+/* красная полоска сверху */
+
+.legend-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 6px;
+
+  background: #ff2038;
+
+  z-index: 3;
+}
+
+
+/* hover */
+
+.legend-card:hover {
+  transform: translateY(-7px);
+
+  border-color: #bbbbB5;
+
+  box-shadow:
+      0 22px 50px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ================================================= */
+/*                  ФОТОГРАФИЯ                       */
+/* ================================================= */
+
+.portrait-large {
+  width: 100%;
+
+  /* вертикальный формат фотографии */
+  aspect-ratio: 4 / 5;
+
+  /* отменяем старую фиксированную высоту */
+  height: auto;
+
+  overflow: hidden;
+
+  background: #deded8;
+
+  border-radius: 17px;
+
+  margin-bottom: 22px;
+}
+
+
+/* если фото вставляет script.js */
+
+.portrait-large img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  /* заполняет карточку без искажения */
+  object-fit: cover;
+
+  /* лицо остаётся в правильной зоне */
+  object-position: center top;
+
+  transition: transform 0.45s ease;
+}
+
+
+/* увеличение при наведении */
+
+.legend-card:hover .portrait-large img {
+  transform: scale(1.03);
+}
+
+
+/* если изображение не загрузилось */
+
+.portrait-large::after {
+  font-family: "Oswald", sans-serif;
+
+  font-size: 22px;
+
+  color: #777777;
+}
+
+
+/* ================================================= */
+/*                ТИП ЛИЧНОСТИ                       */
+/* ================================================= */
+
+.legend-card > span {
+  display: inline-flex;
+
+  align-items: center;
+
+  min-height: 25px;
+
+  margin-bottom: 10px;
+
+  padding: 5px 9px;
+
+  color: #ff2038;
+
+  background: rgba(255, 32, 56, 0.08);
+
+  border-radius: 6px;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+
+/* ================================================= */
+/*                      ИМЯ                          */
+/* ================================================= */
+
+.legend-card h3 {
+  position: relative;
+
+  margin: 0 0 17px;
+
+  padding-bottom: 17px;
+
+  color: #111111;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 31px;
+  font-weight: 700;
+
+  line-height: 1;
+
+  text-transform: uppercase;
+
+  border-bottom: 1px solid #deded8;
+}
+
+
+/* небольшая красная линия */
+
+.legend-card h3::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -1px;
+  left: 0;
+
+  width: 45px;
+  height: 3px;
+
+  background: #ff2038;
+}
+
+
+/* ================================================= */
+/*                    ОПИСАНИЕ                       */
+/* ================================================= */
+
+.legend-card > p {
+  margin: 0;
+
+  min-height: 95px;
+
+  color: #62625e;
+
+  font-size: 18px;
+
+  line-height: 1.75;
+}
+
+
+/* ================================================= */
+/*              НЕБОЛЬШОЙ F1-ДЕКОР                   */
+/* ================================================= */
+
+.legend-card::after {
+  content: "";
+
+  position: absolute;
+
+  right: -45px;
+  bottom: -55px;
+
+  width: 130px;
+  height: 130px;
+
+  border: 24px solid rgba(255, 32, 56, 0.035);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+/* ================================================= */
+/*                    АДАПТИВ                        */
+/* ================================================= */
+
+@media (max-width: 1100px) {
+
+  .legends-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+
+  .portrait-large {
+      height: 400px;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .legends {
+      padding-top: 80px;
+      padding-bottom: 80px;
+  }
+
+
+  .legends-grid {
+      grid-template-columns: 1fr;
+  }
+
+
+  .portrait-large {
+      height: 440px;
+  }
+
+
+  .legends::before {
+      font-size: 130px;
+  }
+
+
+  .legend-card h3 {
+      font-size: 28px;
+  }
+
+}
+
+
+@media (max-width: 450px) {
+
+  .portrait-large {
+      height: 350px;
+  }
+
+
+  .legend-card {
+      padding: 14px;
+  }
+
+}
+
+/* ================================================= */
+/* FIX — КАК СМОТРЕТЬ СВОЮ ПЕРВУЮ ГОНКУ             */
+/* =================================================!!!!!!!!!!! */
+
+/* ================================================= */
+/* FINAL FIX — КАК СМОТРЕТЬ ПЕРВУЮ ГОНКУ            */
+/* ================================================= */
+
+
+/* ОСНОВНОЙ БЛОК */
+
+.watch-guide {
+
+  /* ВАЖНО:
+     отменяем старый display:grid */
+
+  display: block;
+
+  width: 100%;
+
+  padding:
+      110px
+      clamp(24px, 5vw, 90px);
+
+  background: #eeeeea;
+
+  color: #111111;
+}
+
+
+
+/* ================================================= */
+/* ОБЩАЯ ШИРИНА СОДЕРЖИМОГО                          */
+/* ================================================= */
+
+.watch-guide .section-heading,
+.watch-guide .watch-intro,
+.watch-guide .broadcast-grid {
+
+  width: 100%;
+
+  max-width: 1450px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+/* ================================================= */
+/* ЗАГОЛОВОК                                         */
+/* ================================================= */
+
+.watch-guide .section-heading {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 22px;
+
+  margin-bottom: 30px;
+}
+
+
+
+/* ================================================= */
+/* ВВОДНЫЙ ТЕКСТ                                     */
+/* ================================================= */
+
+.watch-guide .watch-intro {
+
+  display: block;
+
+  margin-top: 0;
+  margin-bottom: 55px;
+}
+
+
+.watch-guide .watch-intro p {
+
+  max-width: 720px;
+
+  margin: 0;
+
+  color: #666662;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+
+/* ================================================= */
+/* СЕТКА КАРТОЧЕК                                    */
+/* ================================================= */
+
+.broadcast-grid {
+  display: grid;
+
+  grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+
+/* карточка */
+
+.broadcast-card {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #d4d4cf;
+  border-radius: 22px;
+
+  transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+}
+
+
+.broadcast-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+      0 18px 40px rgba(0,0,0,.09);
+}
+
+
+/* ================================================= */
+/* ФОТО                                             */
+/* ================================================= */
+
+.broadcast-image {
+  position: relative;
+
+  width: 100%;
+  height: 310px;
+
+  overflow: hidden;
+
+  background: #111111;
+}
+
+
+.broadcast-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  transition: transform .35s ease;
+}
+
+
+.broadcast-card:hover .broadcast-image img {
+  transform: scale(1.02);
+}
+
+
+/* номер */
+
+.broadcast-number {
+  position: absolute;
+
+  top: 16px;
+  left: 16px;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  background: #ff2038;
+  color: #ffffff;
+
+  border-radius: 50%;
+
+  font-family: "Oswald", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* ================================================= */
+/* ТЕКСТОВАЯ ЧАСТЬ                                   */
+/* ================================================= */
+
+.broadcast-info {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+
+  padding: 28px 30px 30px;
+}
+
+
+.broadcast-tag {
+  display: inline-block;
+
+  width: fit-content;
+
+  margin-bottom: 10px;
+
+  color: #ff2038;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  letter-spacing: .16em;
+
+  text-transform: uppercase;
+}
+
+
+.broadcast-info h3 {
+  margin: 0 0 12px;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 30px;
+  line-height: 1.05;
+
+  text-transform: uppercase;
+}
+
+
+.broadcast-info > p {
+  margin-bottom: 0;
+
+  color: #666662;
+
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+
+/* ================================================= */
+/* ЧЁРНАЯ ПОДСКАЗКА                                 */
+/* ================================================= */
+
+.broadcast-tip {
+  margin-top: auto;
+  padding: 15px 16px;
+
+  background: #111111;
+
+  border-radius: 12px;
+}
+
+
+.broadcast-tip b {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #ff2038;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 18px;
+
+  text-transform: uppercase;
+}
+
+
+.broadcast-tip span {
+  color: #aaaaa5;
+
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+
+/* ================================================= */
+/* ИНТЕРВАЛ                                          */
+/* ================================================= */
+
+.broadcast-example {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 20px;
+
+  padding: 14px 16px;
+
+  background: #111111;
+  color: #ffffff;
+
+  border-radius: 10px;
+}
+
+
+.broadcast-example span {
+  font-family: "Oswald", sans-serif;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+
+.broadcast-example strong {
+  color: #ff2038;
+
+  font-family: "Oswald", sans-serif;
+}
+
+
+.broadcast-small {
+  margin-top: 10px !important;
+
+  font-size: 14px !important;
+}
+
+
+/* ================================================= */
+/* ШИНЫ                                              */
+/* ================================================= */
+
+.broadcast-tyres {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+
+.broadcast-tyres span {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  background: #111111;
+
+  border-radius: 50%;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+
+.broadcast-soft {
+  color: #ff3030;
+}
+
+
+.broadcast-medium {
+  color: #ffd83d;
+}
+
+
+.broadcast-hard {
+  color: #ffffff;
+}
+
+
+/* ================================================= */
+/* ТЕЛЕМЕТРИЯ                                        */
+/* ================================================= */
+
+.broadcast-featured {
+  background: #111111;
+  color: #ffffff;
+
+  border-color: #222222;
+}
+
+
+.broadcast-featured .broadcast-info > p {
+  color: #999995;
+}
+
+
+.telemetry-explain {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0,1fr));
+
+  gap: 8px;
+
+  margin-top: 22px;
+}
+
+
+.telemetry-explain div {
+  padding: 15px;
+
+  background: #1d1d1d;
+
+  border-radius: 10px;
+}
+
+
+.telemetry-explain strong {
+  display: block;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 26px;
+}
+
+
+.telemetry-explain span {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #777777;
+
+  font-size: 18px;
+
+  text-transform: uppercase;
+}
+
+
+/* ================================================= */
+/* ПЛАНШЕТ                                           */
+/* ================================================= */
+
+@media (max-width: 1000px) {
+
+  .broadcast-image {
+      height: 260px;
+  }
+
+}
+
+
+/* ================================================= */
+/* ТЕЛЕФОН                                           */
+/* ================================================= */
+
+@media (max-width: 760px) {
+
+  .watch-guide {
+      padding:
+          80px 22px;
+  }
+
+
+  .broadcast-grid {
+      grid-template-columns: 1fr;
+  }
+
+
+  .broadcast-image {
+      height: 240px;
+  }
+
+
+  .watch-intro {
+      margin-bottom: 35px;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .broadcast-info {
+      padding: 22px;
+  }
+
+
+  .broadcast-image {
+      height: 210px;
+  }
+
+
+  .telemetry-explain {
+      grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ================================================= */
+/*             АНАТОМИЯ БОЛИДА F1 2026               */
+/* ================================================= */
+
+.car-anatomy {
+  position: relative;
+
+  padding-top: 110px;
+  padding-bottom: 120px;
+
+  background: #0a0a0a;
+  color: #ffffff;
+
+  overflow: hidden;
+}
+
+
+/* декоративный номер */
+
+.car-anatomy::before {
+  content: "07";
+
+  position: absolute;
+
+  top: 30px;
+  right: 4%;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 230px;
+  font-weight: 700;
+
+  line-height: 1;
+
+  color: rgba(255,255,255,.025);
+
+  pointer-events: none;
+}
+
+
+.car-anatomy .section-heading {
+  position: relative;
+
+  z-index: 2;
+}
+
+
+
+/* ================================================= */
+/*                 INTRO                             */
+/* ================================================= */
+
+.car-anatomy-intro {
+  display: grid;
+
+  grid-template-columns:
+      .85fr 1.4fr;
+
+  gap: 18px;
+
+  margin-bottom: 22px;
+}
+
+
+
+/* текст */
+
+.car-anatomy-text {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 45px;
+
+  background: #151515;
+
+  border: 1px solid #2c2c2c;
+
+  border-radius: 25px;
+}
+
+
+.car-anatomy-label {
+  margin-bottom: 20px;
+
+  color: #ff2038;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  letter-spacing: .18em;
+
+  text-transform: uppercase;
+}
+
+
+.car-anatomy-text h3 {
+  margin: 0 0 25px;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: clamp(35px, 4vw, 58px);
+
+  line-height: .95;
+
+  text-transform: uppercase;
+}
+
+
+.car-anatomy-text p {
+  max-width: 600px;
+
+  margin-bottom: 15px;
+
+  color: #999994;
+
+  font-size: 13px;
+
+  line-height: 1.75;
+}
+
+
+
+/* большое фото */
+
+.car-overview-image {
+  position: relative;
+
+  min-height: 520px;
+
+  overflow: hidden;
+
+  background: #171717;
+
+  border-radius: 25px;
+}
+
+
+.car-overview-image img {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+
+  inset: 0;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform .45s ease;
+}
+
+
+.car-overview-image:hover img {
+  transform: scale(1.025);
+}
+
+
+
+.overview-badge {
+  position: absolute;
+
+  right: 22px;
+  bottom: 22px;
+
+  padding: 10px 14px;
+
+  background: #ff2038;
+
+  color: #ffffff;
+
+  border-radius: 50px;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 18px;
+
+  letter-spacing: .12em;
+}
+
+
+
+/* ================================================= */
+/*                 PARTS GRID                        */
+/* ================================================= */
+
+.car-parts-grid {
+  display: grid;
+
+  grid-template-columns:
+      repeat(3, minmax(0,1fr));
+
+  gap: 17px;
+}
+
+
+
+/* одна карточка */
+
+.car-part {
+  display: flex;
+
+  flex-direction: column;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  background: #eeeeea;
+
+  color: #111111;
+
+  border-radius: 22px;
+
+  transition:
+      transform .3s ease,
+      box-shadow .3s ease;
+}
+
+
+.car-part:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+      0 18px 40px
+      rgba(0,0,0,.28);
+}
+
+
+
+/* ================================================= */
+/*                 IMAGE                             */
+/* ================================================= */
+
+.car-part-image {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 4 / 3;
+
+  overflow: hidden;
+
+  background: #222222;
+}
+
+
+.car-part-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  transition: transform .4s ease;
+}
+
+
+.car-part:hover .car-part-image img {
+  transform: scale(1.035);
+}
+
+
+
+/* номер */
+
+.car-part-number {
+  position: absolute;
+
+  top: 15px;
+  left: 15px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 37px;
+  height: 37px;
+
+  background: #ff2038;
+
+  color: #ffffff;
+
+  border-radius: 50%;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 18px;
+
+  font-weight: 700;
+}
+
+
+
+/* ================================================= */
+/*                  CONTENT                          */
+/* ================================================= */
+
+.car-part-content {
+  display: flex;
+
+  flex-direction: column;
+
+  flex: 1;
+
+  padding: 26px;
+}
+
+
+.car-part-type {
+  margin-bottom: 10px;
+
+  color: #ff2038;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  letter-spacing: .17em;
+
+  text-transform: uppercase;
+}
+
+
+
+.car-part-content h3 {
+  margin: 0 0 14px;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 28px;
+
+  line-height: 1;
+
+  text-transform: uppercase;
+}
+
+
+
+.car-part-content > p {
+  margin: 0;
+
+  color: #61615d;
+
+  font-size: 18px;
+
+  line-height: 1.7;
+}
+
+
+
+/* дополнительное объяснение */
+
+.car-part-note {
+  margin-top: auto;
+
+  padding: 16px;
+
+  margin-top: 22px;
+
+  background: #111111;
+
+  color: #999994;
+
+  border-radius: 11px;
+
+  font-size: 18px;
+
+  line-height: 1.6;
+}
+
+
+.car-part-note b {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #ff2038;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 18px;
+
+  text-transform: uppercase;
+}
+
+
+
+/* ================================================= */
+/* SPECIAL ACTIVE AERO                               */
+/* ================================================= */
+
+.car-part:nth-child(1),
+.car-part:nth-child(7) {
+  background: #ff2038;
+
+  color: #ffffff;
+}
+
+
+.car-part:nth-child(1)
+.car-part-type,
+
+.car-part:nth-child(7)
+.car-part-type {
+  color: #ffffff;
+}
+
+
+.car-part:nth-child(1)
+.car-part-content > p,
+
+.car-part:nth-child(7)
+.car-part-content > p {
+  color: #ffe1e5;
+}
+
+
+.car-part:nth-child(1)
+.car-part-note,
+
+.car-part:nth-child(7)
+.car-part-note {
+  background: #111111;
+}
+
+
+
+/* ================================================= */
+/* TABLET                                            */
+/* ================================================= */
+
+@media (max-width: 1100px) {
+
+  .car-anatomy-intro {
+      grid-template-columns: 1fr;
+  }
+
+
+  .car-overview-image {
+      min-height: 450px;
+  }
+
+
+  .car-parts-grid {
+      grid-template-columns:
+          repeat(2,minmax(0,1fr));
+  }
+
+}
+
+
+
+/* ================================================= */
+/* MOBILE                                            */
+/* ================================================= */
+
+@media (max-width: 700px) {
+
+  .car-anatomy {
+      padding-top: 80px;
+      padding-bottom: 80px;
+  }
+
+
+  .car-anatomy::before {
+      font-size: 120px;
+  }
+
+
+  .car-anatomy-text {
+      padding: 28px;
+  }
+
+
+  .car-overview-image {
+      min-height: 300px;
+  }
+
+
+  .car-parts-grid {
+      grid-template-columns: 1fr;
+  }
+
+
+  .car-part-image {
+      aspect-ratio: 16 / 10;
+  }
+
+}
