@@ -3254,4 +3254,103 @@ h3{font-size:20px}
     }
 }
 
+/* ========================================= */
+/* MOBILE — КОМАНДЫ И ПИЛОТЫ                */
+/* ========================================= */
+
+@media (max-width: 760px) {
+
+    /* вся сетка команд */
+    .teams-profiles-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    /* большая карточка одной команды */
+    .team-card-large {
+        width: 100%;
+        padding: 22px;
+        border-radius: 20px;
+    }
+
+    /* верх карточки */
+    .team-card-header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .team-card-header h3 {
+        font-size: 30px;
+    }
+
+    .team-card-header p {
+        font-size: 12px;
+    }
+
+    /* описание */
+    .team-description {
+        font-size: 12px;
+        line-height: 1.6;
+        margin-bottom: 24px;
+    }
+
+    /* люди внутри команды */
+    .team-people {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    /* одна карточка человека */
+    .team-person {
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* фото */
+    .person-photo {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        height: auto;
+
+        overflow: hidden;
+        border-radius: 16px;
+    }
+
+    .person-photo img {
+        width: 100%;
+        height: 100%;
+
+        display: block;
+
+        object-fit: cover;
+        object-position: center top;
+    }
+
+    /* номер / должность */
+    .person-role {
+        margin-top: 12px;
+
+        font-size: 13px;
+        line-height: 1.2;
+
+        letter-spacing: 0.08em;
+
+        overflow-wrap: anywhere;
+    }
+
+    /* имя */
+    .team-person h4 {
+        margin-top: 6px;
+
+        font-size: 22px;
+        line-height: 1.1;
+
+        overflow-wrap: anywhere;
+    }
+}
+
+
 
