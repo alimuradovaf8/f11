@@ -123,13 +123,13 @@ h3{font-size:20px}
 .day-card.race-day{border-color:rgba(255,32,56,.55)}
 .day-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:56px}
 .day-top span{font:700 13px "Oswald";color:var(--red);letter-spacing:.2em}
-.day-top strong{font-size:12px;color:#888}
+.day-top strong{font-size:18px;color:#888}
 .day-card h3{font:700 31px "Oswald";text-transform:uppercase}
-.day-card p,.day-card li{font-size:14px;line-height:1.7;color:#989894}
+.day-card p,.day-card li{font-size:18px;line-height:1.7;color:#989894}
 .day-card.active p{color:#555}
 .day-card ul{padding-left:19px}
 .qualifying{display:grid;gap:8px;margin-top:25px}
-.qualifying span{display:flex;justify-content:space-between;background:#d9d9d2;padding:11px 13px;border-radius:5px;font-size:12px}
+.qualifying span{display:flex;justify-content:space-between;background:#d9d9d2;padding:11px 13px;border-radius:5px;font-size:18px}
 .qualifying b{color:var(--red)}
 .lights{display:flex;gap:8px;margin-top:42px;padding:13px;background:#040404;border-radius:10px;width:max-content}
 .lights i{display:block;width:20px;height:20px;background:var(--red);border-radius:50%;box-shadow:0 0 16px rgba(255,32,56,.8)}
@@ -149,14 +149,14 @@ h3{font-size:20px}
 .podium-place.first{height:285px;background:white;color:#111}.podium-place.second{height:220px}.podium-place.third{height:180px}
 .points-table{background:#fff;color:#111;border-radius:var(--radius);padding:25px}
 .points-table div{display:flex;justify-content:space-between;border-bottom:1px solid #ddd;padding:12px 6px}
-.points-table div:last-child{border:0}.points-table span{font-size:13px}.points-table b{font:700 22px "Oswald"}
-.note{font-size:12px;margin:20px 0 0;color:#ffe0e4}
+.points-table div:last-child{border:0}.points-table span{font-size:18px}.points-table b{font:700 22px "Oswald"}
+.note{font-size:18px;margin:20px 0 0;color:#ffe0e4}
 
 .rules{background:#e9e9e3;color:#101010}
 .regulation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
 .reg-card{position:relative;background:#f8f8f4;border:1px solid #d2d2cb;border-radius:var(--radius);padding:31px;min-height:330px;overflow:hidden}
 .reg-card h3{font:700 28px/1.05 "Oswald";text-transform:uppercase;margin-top:45px}
-.reg-card p{font-size:14px;line-height:1.7;color:#5e5e59}
+.reg-card p{font-size:18px;line-height:1.7;color:#5e5e59}
 .reg-highlight{background:#101010;color:white;border-color:#101010;grid-column:span 2}
 .reg-highlight p{color:#aaa;max-width:70%}
 .reg-index{position:absolute;top:28px;right:29px;font:700 12px "Oswald";color:var(--red)}
@@ -164,7 +164,7 @@ h3{font-size:20px}
 .wing-graphic i{position:absolute;right:0;width:150px;height:11px;background:var(--red);transform:skewX(-20deg)}
 .wing-graphic i:nth-child(2){top:27px;width:120px}.wing-graphic i:nth-child(3){top:54px;width:90px}
 .power-bar{height:8px;background:#ddd;margin:30px 0 8px}.power-bar span{display:block;width:73%;height:100%;background:var(--red)}
-.reg-card small{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#777}
+.reg-card small{font-size:18px;letter-spacing:.12em;text-transform:uppercase;color:#777}
 .fuel-icon{font-size:90px;color:var(--red);line-height:.8;position:absolute;right:30px;bottom:18px}
 .dimension{position:absolute;bottom:30px;font:700 13px "Oswald";color:var(--red);letter-spacing:.14em}
 .qual-mini{display:flex;gap:10px;align-items:center;margin-top:25px}.qual-mini b{font:700 28px "Oswald"}.qual-mini span{color:var(--red)}
@@ -175,17 +175,17 @@ h3{font-size:20px}
 .tyre{width:92px;height:92px;border:11px solid #333;border-radius:50%;display:grid;place-items:center;margin-bottom:24px;box-shadow:inset 0 0 0 8px #080808}
 .tyre span{font:700 28px "Oswald"}
 .tyre-card h3{font:700 24px "Oswald";text-transform:uppercase;margin-bottom:8px}
-.tyre-card p{font-size:12px;color:#888;line-height:1.55}
+.tyre-card p{font-size:18px;color:#888;line-height:1.55}
 .soft .tyre{border-color:#f34343}.medium .tyre{border-color:#ffd840}.hard .tyre{border-color:#eaeaea}.intermediate .tyre{border-color:#46d75b}.wet .tyre{border-color:#2f6cff}
 .strategy-box{margin-top:25px;padding:38px;border-radius:var(--radius);background:#171717;display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:center}
 .pit-clock{width:160px;height:160px;border:8px solid var(--red);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.pit-clock strong{font:700 48px "Oswald"}.pit-clock span{font-size:11px;text-transform:uppercase;letter-spacing:.2em}
+.pit-clock strong{font:700 48px "Oswald"}.pit-clock span{font-size:18px;text-transform:uppercase;letter-spacing:.2em}
 .strategy-box h3{font:700 31px "Oswald";text-transform:uppercase;margin:11px 0}.strategy-box p{color:#999;line-height:1.7}
 
 .flags{background:#151515}
 .flags-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .flags-grid article{border:1px solid #2e2e2e;border-radius:18px;padding:24px;display:grid;grid-template-columns:58px 1fr;column-gap:17px;align-items:center}
-.flags-grid h3{margin:0;font:700 22px "Oswald";text-transform:uppercase}.flags-grid p{grid-column:2;font-size:12px;color:#888;line-height:1.5;margin:4px 0 0}
+.flags-grid h3{margin:0;font:700 22px "Oswald";text-transform:uppercase}.flags-grid p{grid-column:2;font-size:18px;color:#888;line-height:1.5;margin:4px 0 0}
 .flag{display:block;width:58px;height:42px;clip-path:polygon(0 0,100% 10%,92% 100%,0 85%)}
 .yellow{background:#ffd630}.red{background:#ef2035}.blue{background:#2e66e8}.green{background:#44d66b}
 .chequered{background:conic-gradient(#fff 25%,#111 0 50%,#fff 0 75%,#111 0);background-size:16px 16px}
@@ -3237,120 +3237,212 @@ h3{font-size:20px}
 
 }
 
-@media (max-width: 760px) {
-
-    .team-people {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-    }
-
-    .team-person:last-child {
-        grid-column: 1 / -1;
-    }
-
-    .person-photo {
-        aspect-ratio: 3 / 4;
-    }
-}
-
 /* ========================================= */
-/* MOBILE — КОМАНДЫ И ПИЛОТЫ                */
+/*                  FIA                      */
 /* ========================================= */
 
-@media (max-width: 760px) {
+.fia-section {
+  background: #eeeeea;
+  color: #111111;
 
-    /* вся сетка команд */
-    .teams-profiles-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    /* большая карточка одной команды */
-    .team-card-large {
-        width: 100%;
-        padding: 22px;
-        border-radius: 20px;
-    }
-
-    /* верх карточки */
-    .team-card-header {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
-
-    .team-card-header h3 {
-        font-size: 30px;
-    }
-
-    .team-card-header p {
-        font-size: 12px;
-    }
-
-    /* описание */
-    .team-description {
-        font-size: 12px;
-        line-height: 1.6;
-        margin-bottom: 24px;
-    }
-
-    /* люди внутри команды */
-    .team-people {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 22px;
-    }
-
-    /* одна карточка человека */
-    .team-person {
-        width: 100%;
-        min-width: 0;
-    }
-
-    /* фото */
-    .person-photo {
-        width: 100%;
-        aspect-ratio: 4 / 5;
-        height: auto;
-
-        overflow: hidden;
-        border-radius: 16px;
-    }
-
-    .person-photo img {
-        width: 100%;
-        height: 100%;
-
-        display: block;
-
-        object-fit: cover;
-        object-position: center top;
-    }
-
-    /* номер / должность */
-    .person-role {
-        margin-top: 12px;
-
-        font-size: 13px;
-        line-height: 1.2;
-
-        letter-spacing: 0.08em;
-
-        overflow-wrap: anywhere;
-    }
-
-    /* имя */
-    .team-person h4 {
-        margin-top: 6px;
-
-        font-size: 22px;
-        line-height: 1.1;
-
-        overflow-wrap: anywhere;
-    }
+  padding-top: 110px;
+  padding-bottom: 120px;
 }
 
 
+/* верхний большой блок */
 
+.fia-intro {
+  display: grid;
+
+  grid-template-columns: 1.3fr .7fr;
+
+  gap: 18px;
+
+  margin-bottom: 20px;
+}
+
+
+/* основной текст */
+
+.fia-main-card {
+  padding: 45px;
+
+  background: #111111;
+  color: #ffffff;
+
+  border-radius: 25px;
+}
+
+
+.fia-label {
+  display: block;
+
+  margin-bottom: 28px;
+
+  color: #ff2038;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  letter-spacing: .17em;
+
+  text-transform: uppercase;
+}
+
+
+.fia-main-card h3 {
+  max-width: 700px;
+
+  margin: 0 0 25px;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: clamp(36px, 4vw, 58px);
+
+  line-height: .98;
+
+  text-transform: uppercase;
+}
+
+
+.fia-main-card p {
+  max-width: 650px;
+
+  margin: 0;
+
+  color: #a5a5a0;
+
+  font-size: 20px;
+
+  line-height: 1.8;
+}
+
+
+/* логотип */
+
+.fia-logo-card {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 350px;
+
+  padding: 40px;
+
+  background: #ff2038;
+
+  border-radius: 25px;
+}
+
+
+.fia-logo-card img {
+  width: 75%;
+  max-width: 280px;
+
+  object-fit: contain;
+}
+
+
+/* карточки функций */
+
+.fia-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+
+.fia-card {
+  min-height: 280px;
+
+  padding: 28px;
+
+  background: #ffffff;
+
+  border: 1px solid #d4d4ce;
+  border-radius: 20px;
+
+  transition:
+      transform .3s ease,
+      box-shadow .3s ease;
+}
+
+
+.fia-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+      0 18px 40px rgba(0,0,0,.08);
+}
+
+
+.fia-card > span {
+  display: block;
+
+  margin-bottom: 55px;
+
+  color: #ff2038;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 20px;
+  font-weight: 500;
+}
+
+
+.fia-card h3 {
+  margin-bottom: 12px;
+
+  font-family: "Oswald", sans-serif;
+
+  font-size: 28px;
+
+  text-transform: uppercase;
+}
+
+
+.fia-card p {
+  margin: 0;
+
+  color: #666662;
+
+  font-size: 18px;
+
+  line-height: 1.7;
+}
+
+
+/* адаптив */
+
+@media (max-width: 1000px) {
+
+  .fia-intro {
+      grid-template-columns: 1fr;
+  }
+
+  .fia-grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .fia-grid {
+      grid-template-columns: 1fr;
+  }
+
+  .fia-main-card {
+      padding: 28px;
+  }
+
+  .fia-logo-card {
+      min-height: 220px;
+  }
+
+}
