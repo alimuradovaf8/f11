@@ -3446,3 +3446,842 @@ h3{font-size:20px}
   }
 
 }
+
+
+/* ================================================= */
+/*              ШТРАФЫ В ФОРМУЛЕ-1                  */
+/* ================================================= */
+
+.penalties {
+  background: #eeeeea;
+  color: #111;
+}
+
+
+/* INTRO */
+
+.penalties-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 60px;
+
+  padding: 20px 0 25px;
+
+  border-bottom: 1px solid #ccc;
+}
+
+
+.penalties-label {
+  color: var(--red);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: .18em;
+}
+
+
+.penalties-intro h3 {
+  margin: 14px 0 0;
+
+  font: 700 clamp(35px, 4vw, 55px)/.95 "Oswald";
+
+  text-transform: uppercase;
+}
+
+
+.penalties-intro > p {
+  max-width: 600px;
+
+  margin: 20px 0 0;
+
+  color: #656560;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+
+/* ================================================= */
+/* GRID                                              */
+/* ================================================= */
+
+.penalty-grid {
+  display: grid;
+
+  grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+  gap: 16px;
+
+  margin-top: 15px;
+}
+
+
+.penalty-card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 300px;
+
+  padding: 22px;
+
+  overflow: hidden;
+
+  background: #fff;
+
+  border: 1px solid #d4d4ce;
+  border-radius: var(--radius);
+
+  transition:
+      transform .3s ease,
+      box-shadow .3s ease;
+}
+
+
+.penalty-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+      0 18px 45px rgba(0,0,0,.10);
+}
+
+
+/* большая цифра */
+
+.penalty-value {
+  margin-bottom: 25px;
+
+  color: var(--red);
+
+  font: 700 72px/.8 "Oswald";
+
+  letter-spacing: -.04em;
+}
+
+
+.penalty-value small {
+  margin-left: 5px;
+
+  font-size: 17px;
+
+  letter-spacing: .05em;
+}
+
+
+/* DRIVE THROUGH / STOP & GO */
+
+.penalty-text-value {
+  font-size: 48px;
+
+  line-height: .85;
+}
+
+
+/* тип штрафа */
+
+.penalty-level {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: var(--red);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: .17em;
+}
+
+
+/* название */
+
+.penalty-card h3 {
+  margin: 0 0 15px;
+
+  font: 700 28px/1 "Oswald";
+
+  text-transform: uppercase;
+}
+
+
+/* описание */
+
+.penalty-card > p {
+  margin: 0;
+
+  color: #656560;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+
+/* нижняя подсказка */
+
+.penalty-example {
+  margin-top: auto;
+  padding-top: 22px;
+
+  color: #777;
+
+  font-size: 11px;
+
+  line-height: 1.6;
+
+  border-top: 1px solid #ddd;
+}
+
+
+.penalty-example b {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #111;
+
+  font: 700 12px "Oswald";
+
+  text-transform: uppercase;
+}
+
+
+/* ================================================= */
+/* DRIVE THROUGH                                     */
+/* ================================================= */
+
+.penalty-dark {
+  background: #111;
+
+  color: #fff;
+
+  border-color: #222;
+}
+
+
+.penalty-dark > p {
+  color: #999;
+}
+
+
+.penalty-dark .penalty-example {
+  color: #999;
+
+  border-color: #333;
+}
+
+
+.penalty-dark .penalty-example b {
+  color: #fff;
+}
+
+
+/* ================================================= */
+/* STOP AND GO                                       */
+/* ================================================= */
+
+.penalty-red {
+  background: var(--red);
+
+  color: #fff;
+
+  border-color: var(--red);
+}
+
+
+.penalty-red .penalty-value,
+.penalty-red .penalty-level {
+  color: #fff;
+}
+
+
+.penalty-red > p {
+  color: rgba(255,255,255,.78);
+}
+
+
+.penalty-red .penalty-example {
+  color: rgba(255,255,255,.75);
+
+  border-color: rgba(255,255,255,.25);
+}
+
+
+.penalty-red .penalty-example b {
+  color: #fff;
+}
+
+
+/* ================================================= */
+/* GRID PENALTY                                      */
+/* ================================================= */
+
+.penalty-icon {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 25px;
+
+  color: var(--red);
+
+  font: 700 55px "Oswald";
+}
+
+
+.penalty-icon span {
+  font-size: 55px;
+}
+
+
+/* ================================================= */
+/* DISQUALIFICATION                                  */
+/* ================================================= */
+
+.penalty-dsq {
+  background: #191919;
+
+  color: #fff;
+}
+
+
+.penalty-dsq .penalty-value {
+  color: var(--red);
+}
+
+
+.penalty-dsq > p {
+  color: #999;
+}
+
+
+.penalty-dsq .penalty-example {
+  color: #999;
+
+  border-color: #333;
+}
+
+
+.penalty-dsq .penalty-example b {
+  color: #fff;
+}
+
+
+/* ================================================= */
+/* RACE CONTROL                                      */
+/* ================================================= */
+
+.stewards-guide {
+  display: grid;
+
+  grid-template-columns:
+      .8fr 1.2fr;
+
+  gap: 30px;
+
+  margin-top: 12px;
+
+  padding: 28px;
+
+  background: #111;
+
+  color: #fff;
+
+  border-radius: var(--radius);
+}
+
+
+.stewards-title > span {
+  color: var(--red);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: .17em;
+}
+
+
+.stewards-title h3 {
+  margin: 15px 0 0;
+
+  font: 700 36px/1 "Oswald";
+
+  text-transform: uppercase;
+}
+
+
+.stewards-statuses {
+  display: grid;
+
+  gap: 0;
+}
+
+
+.status-row {
+  display: grid;
+
+  grid-template-columns:
+      190px 1fr;
+
+  gap: 25px;
+
+  align-items: center;
+
+  padding: 17px 0;
+
+  border-bottom: 1px solid #303030;
+}
+
+
+.status-row:last-child {
+  border-bottom: 0;
+}
+
+
+.status-row strong {
+  color: var(--red);
+
+  font: 700 13px "Oswald";
+
+  letter-spacing: .06em;
+}
+
+
+.status-row p {
+  margin: 0;
+
+  color: #aaa;
+
+  font-size: 11px;
+
+  line-height: 1.6;
+}
+
+
+/* ================================================= */
+/* MOBILE                                            */
+/* ================================================= */
+
+@media (max-width: 1000px) {
+
+  .penalty-grid {
+      grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .penalties-intro {
+      grid-template-columns: 1fr;
+
+      gap: 20px;
+  }
+
+
+  .penalty-grid {
+      grid-template-columns: 1fr;
+  }
+
+
+  .penalty-card {
+      min-height: 390px;
+  }
+
+
+  .stewards-guide {
+      grid-template-columns: 1fr;
+
+      gap: 35px;
+
+      padding: 28px;
+  }
+
+
+  .status-row {
+      grid-template-columns: 1fr;
+
+      gap: 7px;
+  }
+
+}
+
+/* ========================================= */
+/*       АЭРОДИНАМИКА — ВИДЕО                */
+/* ========================================= */
+
+.aero-video-block {
+  display: grid;
+  grid-template-columns: .7fr 1.3fr;
+  gap: 18px;
+
+  margin: 25px 0 35px;
+}
+
+
+/* ТЕКСТ */
+
+.aero-video-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  padding: 32px;
+
+  background: #111;
+  color: #fff;
+
+  border-radius: var(--radius);
+}
+
+
+.aero-video-text h3 {
+  margin: 15px 0;
+
+  font: 700 clamp(30px, 3vw, 44px)/1 "Oswald";
+
+  text-transform: uppercase;
+}
+
+
+.aero-video-text p {
+  margin: 0;
+
+  color: #999;
+
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+
+/* ВИДЕО */
+
+.aero-video {
+  position: relative;
+
+  overflow: hidden;
+
+  min-height: 430px;
+
+  background: #050505;
+
+  border-radius: var(--radius);
+}
+
+
+.aero-video video {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  inset: 0;
+
+  object-fit: cover;
+}
+
+
+/* ПОДПИСЬ ПОВЕРХ ВИДЕО */
+
+.aero-video-label {
+  position: absolute;
+
+  left: 22px;
+  bottom: 22px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 14px;
+
+  background: rgba(0, 0, 0, .75);
+  color: #fff;
+
+  border-radius: 6px;
+
+  font: 700 11px "Oswald";
+
+  letter-spacing: .1em;
+}
+
+
+.aero-video-label span {
+  color: var(--red);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .aero-video-block {
+      grid-template-columns: 1fr;
+      gap: 12px;
+  }
+
+  .aero-video-text {
+      padding: 24px;
+  }
+
+  .aero-video {
+      min-height: 260px;
+  }
+
+}
+
+/* FORMULA 1 — FINAL MOBILE OVERRIDES
+   Вставить целиком в САМЫЙ КОНЕЦ существующего style.css.
+   Старые media queries оставить. При ширине > 1100px блок не действует.
+*/
+
+@media (max-width: 1100px) {
+  /* Сжатие вложенных сеток и перенос длинных подписей. */
+  .header, .hero, .section, .footer { overflow-wrap: anywhere; }
+  .header *, .hero-content, .hero-stats *, .section *, .footer * {
+    min-width: 0;
+  }
+  .section img, .section video { max-width: 100%; }
+  .section-number, .logo-mark { flex-shrink: 0; }
+
+  /* Навигация остаётся доступной без добавления JS и кнопки меню. */
+  .header {
+    position: relative;
+    height: auto;
+    padding: 16px 24px;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+  .header .nav {
+    display: flex;
+    order: 3;
+    flex: 0 0 100%;
+    flex-wrap: wrap;
+    gap: 0 18px;
+  }
+  .nav a { display: flex; align-items: center; min-height: 44px; }
+  .header-button { min-height: 44px; }
+
+  /* Текст, иллюстрация и статистика больше не перекрывают друг друга. */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding: 48px 24px 0;
+  }
+  .hero-content { width: 100%; max-width: none; }
+  .hero h1 { font-size: clamp(42px, 9vw, 96px); line-height: .95; }
+  .hero-actions { flex-wrap: wrap; }
+  .hero-visual {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    max-width: 700px;
+    height: 280px;
+    margin: 12px auto;
+    opacity: .8;
+    flex: none;
+  }
+  .car { width: 90%; right: 0; top: 0; transform: rotate(-6deg); }
+  .speed-label { display: none; }
+  .hero-stats {
+    position: relative;
+    inset: auto;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 0;
+  }
+  .hero-stats div { flex-wrap: wrap; gap: 4px 10px; padding: 18px 12px; }
+
+  .intro-grid, .regulation-grid, .tyres-grid, .flags-grid,
+  .fia-grid, .penalty-grid, .car-parts-grid, .strategy-intro,
+  .strategy-factors > div, .race-timeline, .race-knowledge-grid,
+  .legends-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .feature-main { grid-column: 1 / -1; grid-row: auto; }
+  .weekend-grid, .points-layout, .fia-intro, .penalties-intro,
+  .stewards-guide, .car-anatomy-intro, .aero-video-block,
+  .teams-profiles-grid, .circuits-list, .strategy-cases,
+  .glossary-grid, .broadcast-grid { grid-template-columns: minmax(0, 1fr); }
+  .day-card.active { transform: none; }
+  .day-card { min-height: 0; }
+  .day-top { margin-bottom: 28px; }
+  .reg-highlight p { max-width: 100%; }
+  .wing-graphic, .fuel-icon, .dimension {
+    position: relative;
+    inset: auto;
+    margin-top: 20px;
+  }
+  .wing-graphic { margin-left: auto; }
+  .penalties-intro, .stewards-guide { gap: 24px; }
+  .aero-video { min-height: 0; aspect-ratio: 16 / 9; }
+  .aero-video video { object-fit: contain; }
+  .car-overview-image { min-height: 0; aspect-ratio: 16 / 10; }
+  .team-people { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .person-photo { height: auto; aspect-ratio: 3 / 4; }
+  .person-role { font-size: 12px; letter-spacing: .06em; }
+  .circuit-info { padding: 28px; }
+  .circuit-data { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .strategy-intro h3 { font-size: 34px; line-height: 1.1; }
+  .strategy-cases .card-tag { font-size: 13px; }
+  .strategy-intro p, .strategy-cases p, .strategy-factors span,
+  .race-timeline p, .race-knowledge-grid p, .glossary dd { font-size: 18px; }
+  .portrait-large { height: auto; aspect-ratio: 4 / 5; }
+  .portrait-large img { position: absolute; inset: 0; }
+  .broadcast-image { height: auto; aspect-ratio: 16 / 10; }
+  .broadcast-image img { position: absolute; inset: 0; object-fit: contain; }
+  .broadcast-example, .broadcast-tyres { flex-wrap: wrap; gap: 12px; }
+  .broadcast-tip { margin-top: 22px; }
+  .footer { grid-template-columns: minmax(0, 1fr); }
+  .sources { justify-content: flex-start; flex-wrap: wrap; }
+  .sources a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+@media (max-width: 760px) {
+  .header { padding: 14px 18px; }
+  .header .nav { font-size: 12px; gap: 0 16px; }
+  .header-button { display: none; }
+  .hero { padding: 36px 18px 0; }
+  .hero h1 { font-size: clamp(40px, 9.4vw, 70px); }
+  .hero-text { font-size: 16px; }
+  .eyebrow { font-size: 10px; letter-spacing: .12em; }
+  .eyebrow span { flex-shrink: 0; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .btn { padding: 14px 18px; text-align: center; }
+  .hero-visual { height: 220px; }
+  .car {
+    width: 100%;
+    right: 0;
+    top: 0;
+    transform: scale(.8) rotate(-6deg);
+    transform-origin: center top;
+  }
+  .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-stats div { padding: 16px 10px; }
+  .hero-stats div:nth-child(even) { border-right: 0; }
+  .hero-stats span { font-size: 10px; }
+
+  /* Включает поздние секции с собственными padding-top/bottom. */
+  .section { padding: 64px 18px; }
+  .section-heading, .watch-guide .section-heading {
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  .section-heading h2 { font-size: clamp(30px, 6.5vw, 46px); line-height: 1.05; }
+  .section-number { font-size: 12px; }
+  .kicker { font-size: 10px; letter-spacing: .13em; }
+  .car-anatomy::before, .strategy-deep::before,
+  .race-guide::before, .legends::before { font-size: 120px; }
+
+  .intro-grid, .regulation-grid, .flags-grid, .fia-grid,
+  .penalty-grid, .car-parts-grid, .circuits-intro, .strategy-intro,
+  .strategy-cases, .strategy-cases article, .strategy-factors > div,
+  .race-timeline, .race-knowledge-grid, .legends-grid,
+  .sprint-banner, .strategy-box { grid-template-columns: minmax(0, 1fr); }
+  .feature-main, .reg-highlight { grid-column: auto; grid-row: auto; }
+  .tyres-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .feature-card, .mini-card, .day-card, .reg-card, .tyre-card,
+  .fia-main-card, .fia-card, .penalty-card, .car-anatomy-text,
+  .car-part-content, .aero-video-text, .team-card-large,
+  .circuit-info, .strategy-intro article, .strategy-cases article,
+  .strategy-factors, .race-timeline article, .race-knowledge-grid article,
+  .broadcast-info, .sprint-banner, .strategy-box, .stewards-guide {
+    padding: 22px;
+  }
+  .feature-main, .mini-card, .reg-card, .fia-card, .penalty-card,
+  .strategy-intro article, .strategy-cases article, .strategy-factors span,
+  .race-timeline article, .race-knowledge-grid article, .legend-card > p {
+    min-height: 0;
+  }
+  .mini-icon { margin-bottom: 24px; }
+  .feature-main h3 { font-size: 34px; }
+  .feature-main::after { opacity: .25; pointer-events: none; }
+  .fia-main-card h3, .penalties-intro h3,
+  .car-anatomy-text h3 { font-size: 34px; line-height: 1.05; }
+  .fia-main-card p { font-size: 16px; }
+  .fia-label, .car-anatomy-label { font-size: 12px; }
+  .fia-logo-card { min-height: 190px; padding: 28px; }
+  .fia-logo-card img { width: 65%; height: auto; }
+  .fia-card > span, .strategy-intro article > span,
+  .race-timeline article > span { margin-bottom: 28px; }
+  .day-top, .qualifying span { flex-wrap: wrap; gap: 8px; }
+  .qualifying span { font-size: 16px; }
+  .lights { max-width: 100%; gap: 6px; padding: 10px; }
+  .lights i { width: 18px; height: 18px; }
+  .sprint-banner, .strategy-box { gap: 22px; }
+
+  .podium { min-height: 300px; padding: 22px 12px; gap: 8px; }
+  .podium-place { flex: 1; width: auto; padding: 16px 4px; }
+  .podium-place b { font-size: 44px; }
+  .podium-place small { font-size: 10px; letter-spacing: .06em; }
+  .podium-place.first { height: 250px; }
+  .podium-place.second { height: 200px; }
+  .podium-place.third { height: 160px; }
+  .points-table { padding: 18px; }
+  .points-table div { gap: 12px; align-items: center; }
+  .points-table span, .note { font-size: 16px; }
+  .reg-card h3 { margin-top: 30px; }
+  .reg-card small { font-size: 13px; }
+  .pit-clock { width: 120px; height: 120px; }
+  .pit-clock span { font-size: 12px; }
+  .flags-grid article { padding: 20px; grid-template-columns: 48px minmax(0, 1fr); gap: 8px 14px; }
+  .flag { width: 48px; height: 36px; }
+  .penalty-value { font-size: 58px; line-height: 1; }
+  .penalty-text-value { font-size: 42px; }
+  .penalty-example { margin-top: 22px; padding-top: 18px; }
+  .status-row { grid-template-columns: minmax(0, 1fr); gap: 7px; }
+  .stewards-title h3 { font-size: 30px; }
+
+  .overview-badge { right: 12px; bottom: 12px; max-width: calc(100% - 24px); font-size: 12px; }
+  .car-part-image { aspect-ratio: 16 / 10; }
+  .aero-video-label { left: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 8px; font-size: 9px; }
+  .team-card-header { flex-wrap: wrap; align-items: flex-start; gap: 16px; }
+  .team-card-header h3 { font-size: 30px; }
+  .team-logo { width: 90px; height: 60px; }
+  .team-people { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; }
+  .team-person:last-child { grid-column: 1 / -1; width: 100%; max-width: 260px; justify-self: center; }
+  .team-person h4 { font-size: 20px; }
+  .person-role { font-size: 11px; }
+  .circuits-intro { gap: 16px; margin-bottom: 28px; }
+  .circuit-layout { height: 250px; padding: 40px 28px 28px; }
+  .circuit-data { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .circuit-country { font-size: 13px; }
+  .circuit-feature { padding: 16px; }
+  .strategy-intro h3 { font-size: 30px; }
+  .strategy-factors h3 { font-size: 30px; }
+  .strategy-factors span { padding: 18px; }
+  .case-visual { height: 100px; }
+  .glossary dl div { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .watch-guide .watch-intro { margin-bottom: 28px; }
+  .telemetry-explain { grid-template-columns: minmax(0, 1fr); }
+
+  .day-card p, .day-card li, .reg-card p, .tyre-card p,
+  .flags-grid p, .fia-card p, .car-part-content > p, .car-part-note,
+  .circuits-intro p, .circuit-info > p, .strategy-intro p,
+  .strategy-cases p, .strategy-factors span, .race-timeline p,
+  .race-knowledge-grid p, .legend-card > p, .glossary dd,
+  .broadcast-info > p, .broadcast-tip span { font-size: 16px; line-height: 1.65; }
+  .car-anatomy-text p, .aero-video-text p, .penalty-card > p { font-size: 14px; }
+  .footer { padding: 32px 18px; gap: 20px; }
+  .footer p, .sources { font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+  .tyres-grid { grid-template-columns: minmax(0, 1fr); }
+  .section { padding: 52px 14px; }
+  .section-heading, .watch-guide .section-heading { flex-direction: column; gap: 12px; }
+  .section-heading h2 { font-size: 32px; }
+  .team-card-large { padding: 18px; }
+  .team-person h4 { font-size: 18px; }
+  .legend-card { padding: 14px; }
+}
